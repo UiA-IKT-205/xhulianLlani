@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todolist.data.TodoList
+import com.example.todolist.databinding.TaskItemBinding
 
 class TaskAdapter(private var todoList: TodoList) : RecyclerView.Adapter<TaskAdapter.ViewHolder>(){
 

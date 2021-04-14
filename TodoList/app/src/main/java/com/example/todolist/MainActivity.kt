@@ -9,12 +9,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.todolist.adapter.TodoListAdapter
 import com.example.todolist.data.TodoList
 import com.example.todolist.data.TodoListManager
+import com.example.todolist.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
 
 const val EXTRA_LIST_INFO: String = "com.example.todolist.info"
-const val REQUEST_TASK_DETAILS:Int = 564567
 
-// May be Task
 class ListHolder{
 
     companion object{
@@ -45,10 +44,8 @@ class MainActivity : AppCompatActivity() {
 
         binding.addList.setOnClickListener{
             addList("newTask")
-/*
-            val ipm = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-            ipm.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
- */
+
+
         }
     }
 
@@ -67,7 +64,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         startActivity(intent)
-        //startActivityForResult(intent, REQUEST_TASK_DETAILS)
     }
 
 }
