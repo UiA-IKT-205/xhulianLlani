@@ -79,11 +79,25 @@ class Piano : Fragment() {
                 val halfTonePianoKey = HalfTonePianoKeyFragment.newInstance(halfTones.get(halfTones.indexOf("$it#")))
 
                 halfTonePianoKey.onKeyDown = {
+                    if(!Timer.timerActive){
+                        Timer.startTime = 0
+                        Timer.startTimeLong = System.nanoTime()
+                        Timer.timerActive = true
+                    }else{
+                        Timer.startTime = System.nanoTime() - Timer.startTimeLong
+                    }
+
+                    start = System.nanoTime()
                     println("Piano key down $it")
                 }
 
                 halfTonePianoKey.onKeyUp = {
-                    println("Piano key up $it")
+                    timeElapsed = System.nanoTime() - start
+                    val note = Note(it, Timer.startTime/1000000, timeElapsed/1000000)
+
+                    score.add(note)
+
+                    println("Piano key up $note")
                 }
 
                 ft.add(view.pianoKeys.id, halfTonePianoKey, "note_$it")
